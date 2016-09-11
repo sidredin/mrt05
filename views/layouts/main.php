@@ -30,7 +30,7 @@ AppAsset::register($this);
         <div class="col-sm-8">
             <div class="pull-left" style="margin-right: 20px">
                 <a href="index.html">
-                    <img src="static/images/logo.png" class="img-responsive" alt="logo" />
+                    <img src="/images/logo.jpg" class="img-responsive" alt="logo" />
                 </a>
             </div>
 
