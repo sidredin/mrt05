@@ -1,13 +1,25 @@
+<?php
 
+/* @var $this yii\web\View */
+
+use yii\helpers\Html;
+use yii\helpers\Url;
+
+?> 
+<h2 style="margin-top: 0px">
+    <a href="index.html">
+    <?=$city->name?> <small>МРТ и КТ клиники</small>
+    </a>
+</h2>
+<?php if(!empty($clinics)): ?>
+<div id="map" style="height: 400px; width: 100%"></div>
+<?php foreach ($clinics as $clinic):?>
 
     <div class="row clinic-row">
     <div class="col-xs-4 col-sm-2">
         
-            <a href="clinic/almazova">
-                
-    <img class="img-responsive clinic-table-img" alt="Федеральный Центр сердца, крови и эндокринологии имени В.А. Алмазова"
-         src="http://o-mri.ru.clinics.s3.amazonaws.com/almazova.jpg"/>
-
+            <a href="<?=  Url::to(['clinic/view', 'id'=>$clinic->id])?>">
+    <?= Html::img("@web/images/clinics/{$clinic->id}.jpg", ["alt" => $clinic->name, "class"=>"img-responsive clinic-table-img"]) ?>
             </a>
         
     </div>
@@ -15,9 +27,7 @@
     <div class="col-xs-8 col-sm-7">
         
             <h4 class="heading">
-                <a href="clinic/almazova">
-                    Федеральный Центр сердца, крови и эндокринологии имени В.А. Алмазова
-                </a>
+                <a href="<?=  Url::to(['clinic/view', 'id'=>$clinic->id])?>"><?=$clinic->name?></a>
             </h4>
 
             
@@ -107,7 +117,15 @@
     </div>
 </div>
 
-
+<?php endforeach; ?>
+<?php                        
+    echo \yii\widgets\LinkPager::widget([
+        'pagination' => $pages,
+    ]);
+  ?>
+  <?php else: ?>
+  <h2>По данному городу сведений пока нет. Мы работаем над этим...</h2>
+<?php endif; ?>
     <div class="row clinic-row">
     <div class="col-xs-4 col-sm-2">
         

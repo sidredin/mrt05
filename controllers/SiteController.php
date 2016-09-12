@@ -31,7 +31,6 @@ class SiteController extends AppController
           ->limit($pages->limit)
           ->all();
       $this->setMeta($city->name.': Полный каталог клиник МРТ и КТ', $city->keywords, $city->description);
-      debug($clinics);
       return $this->render('cities', compact('pages', 'clinics', 'city'));
     }
 }

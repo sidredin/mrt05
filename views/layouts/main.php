@@ -534,20 +534,8 @@ AppAsset::register($this);
 </div>
     </div>
 
-    <div class="col-sm-9">
-        <h2 style="margin-top: 0px">
-            <a href="index.html">
-            СПб <small>МРТ и КТ клиники</small>
-            </a>
-        </h2>
-        <div id="map" style="height: 400px; width: 100%"></div>
-        
-            
-
-   
-<?=$content?>
-
-        
+    <div class="col-sm-9">   
+<?=$content?>        
     </div>
 
 </div>
