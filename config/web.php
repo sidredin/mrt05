@@ -5,6 +5,7 @@ $params = require(__DIR__ . '/params.php');
 $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
+    // 'catchAll' => ['site/offline'],
     'bootstrap' => ['log'],
     'language' => 'ru',
     'components' => [
@@ -41,10 +42,12 @@ $config = [
         ],
         'db' => require(__DIR__ . '/db.php'),
         'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'rules' => [
-            ],
+          'showScriptName' => false,
+          'enablePrettyUrl' => true,
+          'rules' => [
+            'cities/<alias>/page/<page:\d+>' => 'site/cities',
+            'cities/<alias>' => 'site/cities',
+          ],
         ],
     ],
     'params' => $params,
