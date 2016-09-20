@@ -4,6 +4,7 @@
 /* @var $content string */
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
@@ -29,8 +30,8 @@ AppAsset::register($this);
     <div class="row">
         <div class="col-sm-8">
             <div class="pull-left" style="margin-right: 20px">
-                <a href="index.html">
-                    <img src="/images/logo.jpg" class="img-responsive" alt="logo" />
+                <a href="<?= Url::home(); ?>">
+                  <?= Html::img('@web/images/logo.jpg', ['alt'=>'Полный каталог клиник МРТ и КТ']) ?>
                 </a>
             </div>
 
@@ -57,7 +58,7 @@ AppAsset::register($this);
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="index.html" class="navbar-brand active">Все клиники</a>
+            <a href="<?= Url::home(); ?>" class="navbar-brand active">Все клиники</a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

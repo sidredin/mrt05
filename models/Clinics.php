@@ -16,7 +16,7 @@ use yii\db\ActiveRecord;
  */
 class Clinics extends ActiveRecord {
   
-  public function getCities(){
+  public function getCity(){
     return $this->hasOne(Cities::className(), ['id'=>'city_id']);
   }
   
