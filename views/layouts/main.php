@@ -39,13 +39,6 @@ AppAsset::register($this);
                 <small>МРТ&nbsp;КТ</small>
             </h3>
         </div>
-
-        <div class="col-sm-4" style="padding: 20px; text-align: right">
-            <div class="btn-group">
-    <a href="index.html" class="btn btn-primary active">Санкт-Петербург</a>
-    <a href="http://mrict.ru" class="btn btn-default">Москва</a>
-</div>
-        </div>
     </div>
 
     <div class="navbar navbar-default" role="navigation">

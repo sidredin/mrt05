@@ -10,7 +10,7 @@ use yii\helpers\Url;
   <?=$city->name?> <small>МРТ и КТ клиники</small>
 </h2>
 <?php if(!empty($clinics)): ?>
-<div id="map" style="height: 400px; width: 100%"></div>
+<div id="map"></div>
 <?php foreach ($clinics as $clinic):?>
 
     <div class="row clinic-row">

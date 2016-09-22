@@ -5,68 +5,51 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 
-?> 
+?>
 <h2 style="margin-top: 0px">
     <small>МРТ и КТ клиники</small>
 </h2>
-<div id="map" style="height: 400px; width: 100%"></div>
+<div id="map"></div>
 <?php foreach ($clinics as $clinic):?>
 
-    <div class="row clinic-row">
+  <div class="row clinic-row">
     <div class="col-xs-4 col-sm-2">
-        
-            <a href="<?=  Url::to(['/clinic/view', 'id'=>$clinic->id])?>">
-    <?= Html::img("@web/images/clinics/{$clinic->id}.jpg", ["alt" => $clinic->name, "class"=>"img-responsive clinic-table-img"]) ?>
-            </a>
-        
+      <a href="<?=  Url::to(['/clinic/view', 'id'=>$clinic->id])?>">
+        <?= Html::img("@web/images/clinics/{$clinic->id}.jpg", ["alt" => $clinic->name, "class"=>"img-responsive clinic-table-img"]) ?>
+      </a>
     </div>
 
-    <div class="col-xs-8 col-sm-7">
-        
-            <h4 class="heading">
-                <a href="<?=  Url::to(['/clinic/view', 'id'=>$clinic->id])?>"><?=$clinic->name?></a>
-            </h4>
-
-            
-                <div class="phone">
-                  <span class="glyphicon glyphicon-earphone"></span>
-                  <?=$clinic->phone?>
-                </div>
-            
-
-            <p>
-              <span class="glyphicon glyphicon-map-marker"></span>  
-              <?=$clinic->address?>
-                
-                <br/>
-                <a href="<?=  Url::to(['/site/cities', 'alias'=>$clinic->city->alias])?>">
-                    <?=$clinic->city->name?>
-                </a>
-                
-            </p>
-
-            
-                <p>
-                    <i class="glyphicon glyphicon-time"></i>
-                    <em><?=$clinic->working_hours?></em>
-                </p>
-            
-
-            <div>
-                
-    
-    <?php echo $clinic->private_property ? '<span class="label label-primary">Частная</span>' : '<span class="label label-default">Государственная</span>' ?>
-    <?php if ($clinic->tesla_1_5) echo '<span class="label label-success trigger"><span class="glyphicon glyphicon-ok"></span>Сверхвысокое поле</span>' ?>
-    <?php if(mb_stristr ($clinic->working_hours, 'круглосуточно'))
-      echo '<span class="label label-success trigger"><span class="glyphicon glyphicon-ok"></span>МРТ/КТ ночью</span>';
-    ?>
-    <?php if ($clinic->for_children) echo '<span class="label label-success trigger"><span class="glyphicon glyphicon-ok"></span>Для детей</span>' ?>
-    <?php if ($clinic->free_concult) echo '<span class="label label-success trigger"><span class="glyphicon glyphicon-ok"></span>Бесплатная консультация</span>' ?>
-    <?php if ($clinic->clinics_network) echo '<span class="label label-success trigger"><span class="glyphicon glyphicon-ok"></span>Сеть клиник</span>' ?>
-            </div>
-        
+    <div class="col-xs-8 col-sm-7">        
+      <h4 class="heading">
+          <a href="<?=  Url::to(['/clinic/view', 'id'=>$clinic->id])?>"><?=$clinic->name?></a>
+      </h4>
+      <div class="phone">
+        <span class="glyphicon glyphicon-earphone"></span>
+        <?=$clinic->phone?>
+      </div>
+      <p>
+        <span class="glyphicon glyphicon-map-marker"></span>  
+        <?=$clinic->address?>                
+        <br/>
+        <a href="<?=  Url::to(['/site/cities', 'alias'=>$clinic->city->alias])?>">
+            <?=$clinic->city->name?> Zoom: <?=$clinic->city->zoom?>
+        </a>                
+      </p>
+      <p>
+          <i class="glyphicon glyphicon-time"></i>
+          <em><?=$clinic->working_hours?></em>
+      </p>
+      <div>
+        <?php echo $clinic->private_property ? '<span class="label label-primary">Частная</span>' : '<span class="label label-default">Государственная</span>' ?>
+        <?php if ($clinic->tesla_1_5) echo '<span class="label label-success trigger"><span class="glyphicon glyphicon-ok"></span>Сверхвысокое поле</span>' ?>
+        <?php if(mb_stristr ($clinic->working_hours, 'круглосуточно'))
+          echo '<span class="label label-success trigger"><span class="glyphicon glyphicon-ok"></span>МРТ/КТ ночью</span>';
+        ?>
+        <?php if ($clinic->for_children) echo '<span class="label label-success trigger"><span class="glyphicon glyphicon-ok"></span>Для детей</span>' ?>
+        <?php if ($clinic->free_concult) echo '<span class="label label-success trigger"><span class="glyphicon glyphicon-ok"></span>Бесплатная консультация</span>' ?>
+        <?php if ($clinic->clinics_network) echo '<span class="label label-success trigger"><span class="glyphicon glyphicon-ok"></span>Сеть клиник</span>' ?>
+      </div>        
     </div>
-
     <div class="col-xs-12 col-sm-3">
       <?php if($clinic->mrt_min): ?>
       <p>
@@ -80,7 +63,6 @@ use yii\helpers\Url;
       <?php endif; ?>
     </div>
 </div>
-
 <?php endforeach; ?>
 <?php                        
     echo \yii\widgets\LinkPager::widget([
