@@ -1,13 +1,34 @@
+var map;
+var markers = [];
+
 function initialize() {
-      var myLatlng = new google.maps.LatLng(42.948381397653165, 47.51861572265625);
+      var centerLat = $('#map-opts').data('center-lat');
+      var centerLng = $('#map-opts').data('center-lng');
+      // console.log(centerLat);
+      var myLatlng = new google.maps.LatLng(centerLat, centerLng);
       var myOptions = {
-      zoom: 7,
+      zoom: $('#map-opts').data('map-zoom'),
       center: myLatlng
     };
-
-
     map = new google.maps.Map(document.getElementById('map'),
-        myOptions);
+    myOptions);
+    addMarkers();
+}
 
-    
- }
+function addMarkers(){
+	var markers = [];
+	var markerCoords;
+  var clinics = $('.clinic-row');
+  clinics.each(function () {
+  	markerCoords = new google.maps.LatLng($(this).data('lat'), $(this) .data('lng'));
+  	addMarker(markerCoords);
+  })
+}
+
+function addMarker(location) {
+  var marker = new google.maps.Marker({
+    position: location,
+    map: map
+  });
+  markers.push(marker);
+}

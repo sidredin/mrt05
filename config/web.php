@@ -7,6 +7,7 @@ $config = [
     'basePath' => dirname(__DIR__),
     // 'catchAll' => ['site/offline'],
     'bootstrap' => ['log'],
+    'defaultRoute' => 'site/index',
     'language' => 'ru',
     'components' => [
         'request' => [
