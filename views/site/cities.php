@@ -2,8 +2,8 @@
 
 /* @var $this yii\web\View */
 
-$this->registerJsFile('@web/js/main.js', ['position'=>\yii\web\View::POS_END, 'depends' => 'yii\web\YiiAsset'], 'main');
-$this->registerJsFile('https://maps.googleapis.com/maps/api/js?key=AIzaSyBSsTYvYrSq2ITkQP51BDaT_b32DGO5UuM&callback=initialize', ['position'=>\yii\web\View::POS_END, 'depends' => 'main']);
+$this->registerJsFile('@web/js/maps.js', ['position'=>\yii\web\View::POS_END, 'depends' => 'yii\web\YiiAsset'], 'maps');
+$this->registerJsFile('https://maps.googleapis.com/maps/api/js?key=AIzaSyBSsTYvYrSq2ITkQP51BDaT_b32DGO5UuM&callback=initialize', ['position'=>\yii\web\View::POS_END, 'depends' => 'maps']);
 ?>
 <div class="row"> 
   <?= $this->render('_sidebar') ?>
@@ -14,7 +14,7 @@ $this->registerJsFile('https://maps.googleapis.com/maps/api/js?key=AIzaSyBSsTYvY
     <div id="map-opts" data-center-lat="<?=$city->lat?>" data-center-lng="<?=$city->lng?>" data-map-zoom="<?=$city->zoom?>"></div>
     <?php if(!empty($clinics)): ?>
     <div id="map"></div>
-    <?= $this->render('_clinics', compact('pages', 'clinics', 'city')) ?>
+    <?= $this->render('_clinics', compact('clinics', 'city')) ?>
       <?php else: ?>
       <h2>По данному городу сведений пока нет. Мы работаем над этим...</h2>
     <?php endif; ?>

@@ -5,9 +5,9 @@
 
 use yii\helpers\Html;
 use yii\helpers\Url;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
-use yii\widgets\Breadcrumbs;
+// use yii\bootstrap\Nav;
+// use yii\bootstrap\NavBar;
+// use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 
 AppAsset::register($this);
@@ -56,48 +56,26 @@ AppAsset::register($this);
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-
-                
-                
-
-                    
-                    <li class="">
-                        <a href="encyclopedia">Энциклопедия
-                        </a>
-                    </li>
-                
-                
-
-                    
-                    <li class="">
-                        <a href="rating"><span class='glyphicon glyphicon-signal'></span> Рейтинг клиник
-                        </a>
-                    </li>
-                
-                
-
-                    
-                    <li class="">
-                        <a href="discounts"><span class='glyphicon glyphicon-thumbs-up'></span> Акции
-                        </a>
-                    </li>
-                
-                
-
-                    
-                    <li class="">
-                        <a href="mfaq_mrt">О МРТ
-                        </a>
-                    </li>
-                
-                
-
-                    
-                    <li class="">
-                        <a href="mfaq_kt">О КТ
-                        </a>
-                    </li>
-                
+                <li class="">
+                    <a href="<?=  Url::to(['/site/contact'])?>">Контакты
+                    </a>
+                </li>
+                <li class="">
+                    <a href="<?=  Url::to(['/site/about'])?>">О нас
+                    </a>
+                </li>
+                <!--<li class="">
+                    <a href="encyclopedia">Энциклопедия
+                    </a>
+                </li>
+                 <li class="">
+                    <a href="mfaq_mrt">О МРТ
+                    </a>
+                </li>
+                <li class="">
+                    <a href="mfaq_kt">О КТ
+                    </a>
+                </li> -->
             </ul>
 
         </div>

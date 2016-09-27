@@ -43,6 +43,7 @@ use yii\helpers\Url;
         <?php if ($clinic->for_children) echo '<span class="label label-success trigger"><span class="glyphicon glyphicon-ok"></span>Для детей</span>' ?>
         <?php if ($clinic->free_concult) echo '<span class="label label-success trigger"><span class="glyphicon glyphicon-ok"></span>Бесплатная консультация</span>' ?>
         <?php if ($clinic->clinics_network) echo '<span class="label label-success trigger"><span class="glyphicon glyphicon-ok"></span>Сеть клиник</span>' ?>
+        <?php if ($clinic->open_tomograph) echo '<span class="label label-success trigger"><span class="glyphicon glyphicon-ok"></span>Открытый томограф</span>' ?>
       </div>        
     </div>
     <div class="col-xs-12 col-sm-3">
@@ -59,8 +60,3 @@ use yii\helpers\Url;
     </div>
 </div>
 <?php endforeach; ?>
-<?php                        
-    echo \yii\widgets\LinkPager::widget([
-        'pagination' => $pages,
-    ]);
-  ?>

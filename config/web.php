@@ -46,9 +46,11 @@ $config = [
           'showScriptName' => false,
           'enablePrettyUrl' => true,
           'rules' => [
-            'page/<page:\d+>' => 'site/cities',
-            'cities/<alias>/page/<page:\d+>' => 'site/cities',
             'cities/<alias>' => 'site/cities',
+            'contact' => 'site/contact',
+            'login' => 'site/login',
+            'logout' => 'site/logout',
+            'about' => 'site/about',
           ],
         ],
     ],

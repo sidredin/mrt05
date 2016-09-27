@@ -1,218 +1,104 @@
 <?php
 /* @var $this yii\web\View */
+
+use yii\helpers\Url;
+
+$this->registerJsFile('@web/js/view.js', ['position'=>\yii\web\View::POS_END, 'depends' => 'yii\web\YiiAsset']);
+$this->registerJsFile('@web/js/maps.js', ['position'=>\yii\web\View::POS_END, 'depends' => 'yii\web\YiiAsset'], 'maps');
+$this->registerJsFile('https://maps.googleapis.com/maps/api/js?key=AIzaSyBSsTYvYrSq2ITkQP51BDaT_b32DGO5UuM&callback=initialize', ['position'=>\yii\web\View::POS_END, 'depends' => 'maps']);
 ?>
-<div class="row clinic-row">
-        <div class="col-sm-6">
+<div id="map-opts" data-center-lat="<?=$clinic->lat?>" data-center-lng="<?=$clinic->lng?>" data-map-zoom="17"></div>
+<div class="row clinic-row" data-lat="<?=$clinic->lat?>" data-lng="<?=$clinic->lng?>">
+    <div class="col-sm-6">
             
-        <h2 style="margin-top: 0px">Федеральный Центр сердца, крови и эндокринологии имени В.А. Алмазова</h2>
+        <h2 style="margin-top: 0px"><?=$clinic->name?></h2>
 
-        <span class="label label-default">Государственная</span>
-
-
-
-
-
-
-
-
-
-        <span class="label label-success trigger" data-container="body" data-toggle="popover" data-placement="top"
-              data-content="Этим значком отмечены диагностические клиники имеющие в своем парке оборудования, МРТ со сверхвысоким магнитным полем 3 Тл."><span class="glyphicon glyphicon-ok"></span> Сверхвысокое поле</span>
-
-
-
-        <span class="label label-success trigger" data-container="body" data-toggle="popover" data-placement="top"
-              data-content="Этим значком отмечены диагностические клиники с хорошими врачами."><span class="glyphicon glyphicon-ok"></span> Лучшие специалисты</span>
-
-
+        <?php echo $clinic->private_property ? '<span class="label label-primary">Частная</span>' : '<span class="label label-default">Государственная</span>' ?>
+        <?php if ($clinic->tesla_1_5) echo '<span class="label label-success trigger"><span class="glyphicon glyphicon-ok"></span>Сверхвысокое поле</span>' ?>
+        <?php if(mb_stristr ($clinic->working_hours, 'круглосуточно'))
+          echo '<span class="label label-success trigger"><span class="glyphicon glyphicon-ok"></span>МРТ/КТ ночью</span>';
+        ?>
+        <?php if ($clinic->for_children) echo '<span class="label label-success trigger"><span class="glyphicon glyphicon-ok"></span>Для детей</span>' ?>
+        <?php if ($clinic->free_concult) echo '<span class="label label-success trigger"><span class="glyphicon glyphicon-ok"></span>Бесплатная консультация</span>' ?>
+        <?php if ($clinic->clinics_network) echo '<span class="label label-success trigger"><span class="glyphicon glyphicon-ok"></span>Сеть клиник</span>' ?>
+        <?php if ($clinic->open_tomograph) echo '<span class="label label-success trigger"><span class="glyphicon glyphicon-ok"></span>Открытый томограф</span>' ?>
 
         <dl class="dl-horizontal">
-        
-        
-            <dt>Район</dt>
+
+            <dt>Город</dt>
             <dd>
-                <a href="../area/view/primorsky">
-                    Приморский
+                <a href="<?=  Url::to(['/site/cities', 'alias'=>$clinic->city->alias])?>">
+                    г. <?=$clinic->city->name?>
                 </a>
             </dd>
-        
-        
-        <dt>Адрес</dt>
-        <dd>ул. Аккуратова, д. 2.
-        </dd>
-        
-            <dt>Ближайшее метро</dt>
-            <dd>
-                
-                
-                    <a href="../metro/view/udelnaya">
-                        
-                        Удельная
-                    </a>
-                    (800 метров)<br/>
-                
-                    <a href="../metro/view/pionerskaya">
-                        
-                        Пионерская
-                    </a>
-                    (1500 метров)
-                
+
+            <dt>Адрес</dt>
+            <dd><?=$clinic->address?>
             </dd>
-        
 
-        <dt>Телефон</dt>
-        <dd>
-            <span class="glyphicon glyphicon-earphone"></span>
-            
-                <span style="font-size: 140%">
-                    
-        <a href="tel:+78123184073">
-        
-            (812) 318-40-73
-        
-        </a>
+            <dt>Телефон</dt>
+            <dd>
+                <span class="glyphicon glyphicon-earphone"></span>                
+                <span>
+                    <?=$clinic->phone?>
                 </span>
+            </dd>
             
-        </dd>
-        
             <dt>Время работы</dt>
-            <dd><span class="glyphicon glyphicon-time"></span> 3 Тесла ежедневно 09:00-21:00<br/>  1.5 Тесла- Пн-Пт 09:00-17:00</dd>
-        
-
-        
-
+            <dd><span class="glyphicon glyphicon-time"></span> <?=$clinic->working_hours?></dd>
         </dl>
 
+        <?php if($clinic->price_mrt): ?>
+        <h4><i>Цены на МРТ:</i></h4>
+        <?=$clinic->price_mrt?>
+        <?php endif; ?>
 
-        <h4><i>Цены на некоторые исследования:</i></h4>
-        <table class="table table-striped">
-        
-            <tr>
-                <td>МРТ</td>
-                <td><span class="glyphicon glyphicon-ok"></span></td>
-            </tr>
-        
-        
-            <tr>
-                <td>МРТ Головного Мозга</td>
-                <td>3800</td>
-            </tr>
-        
-        
-            <tr>
-                <td>МРТ Поясничного Отдела Позвоночного столба (ПОП)</td>
-                <td>3800</td>
-            </tr>
-        
-        
-            <tr>
-                <td>МРТ Шейного Отдела Позвоночного столба (ШОП)</td>
-                <td>3800</td>
-            </tr>
-        
-        
-            <tr>
-                <td>МРТ Брюшной полости</td>
-                <td>5000</td>
-            </tr>
-        
-        
-            <tr>
-                <td>МРТ Коленного Сустава</td>
-                <td>3800</td>
-            </tr>
-        
-        
-            <tr>
-                <td>КТ</td>
-                <td><span class="glyphicon glyphicon-ok"></span></td>
-            </tr>
-        
-        
-            <tr>
-                <td>КТ Головного Мозга</td>
-                <td>3150</td>
-            </tr>
-        
-        
-            <tr>
-                <td>КТ грудной полости</td>
-                <td>3150</td>
-            </tr>
-        
-        
-            <tr>
-                <td>КТ поясничного отдела позвоночника</td>
-                <td>4000</td>
-            </tr>
-        
-        
-            <tr>
-                <td>КТ сосудов головного мозга</td>
-                <td>7000</td>
-            </tr>
-        
-        
-        
-        
-        
-        </table>
-
-
-        <p>* МРТ Цены взяты с сайта клиники: http://www.almazovcentre.ru/?page_id=12432</p>
-
-
-        <p>* КТ Цены взяты с сайта клиники: http://www.almazovcentre.ru/?page_id=12428</p>
-
+        <?php if($clinic->price_kt): ?>
+        <h4><i>Цены на КТ:</i></h4>
+        <?=$clinic->price_kt?>
+        <?php endif; ?>
 
         <dl class="dl-horizontal" style="margin-top: 20px">
         
+            <?php if($clinic->email): ?>
             <dt>Email</dt>
-            <dd>info@almazovcentre.ru</dd>
-        
-        
+            <dd><?=$clinic->email?></dd>            
+            <?php endif; ?>
+
+            <?php if($clinic->site): ?>
             <dt>Сайт</dt>
-            <dd>http://www.almazovcentre.ru</dd>
-        
-        
+            <dd><?=$clinic->site?></dd>            
+            <?php endif; ?>
+
+            <?php if($clinic->mrt_model): ?>
             <dt>Модель МРТ</dt>
-            <dd>SIEMENS Magnetom Trio A Tim 3.0 Тл + Magnetom Espree 1,5 Тл</dd>
-        
-        
+            <dd><?=$clinic->mrt_model?></dd>            
+            <?php endif; ?>
+
+            <?php if($clinic->kt_model): ?>
             <dt>Модель КТ</dt>
-            <dd>Siemens 128 срезов</dd>
-        
+            <dd><?=$clinic->kt_model?></dd>            
+            <?php endif; ?>        
         </dl>
 
 
-        </div>
-
-        <div class="col-sm-6" style="padding: 10px">
-            <div id="map" style="width: 100%; height: 300px; margin-bottom: 20px"></div>
-        </div>
     </div>
 
-    <div class="row">
-        <div class="cl-sm-9">
+    <div class="col-sm-6" style="padding: 10px">
+        <div id="map" style="width: 100%; height: 300px; margin-bottom: 20px"></div>
+    </div>
+</div>
+
+
+<?php if($clinic->description): ?>
+<div class="row">
+    <div class="cl-sm-9">
+        
+        <div style="padding: 10px">
             
-            <div style="padding: 10px">
-                
-                    <h1>МРТ в Приморском районе</h1>
-                
+            <?=$clinic->description?>
 
-                <div class='ckeditor'>
-                    <p>Если Вам необходимо сделать <strong>МРТ в Приморском районе</strong> города, Вы можете пройти диагностику в Федеральном медицинском исследовательском центре им. В. А. Алмазова. На сверхвысокопольном томографе 3 Тл фирмы Siemens здесь можно сделать <a href='../index.html'>МРТ головного мозга</a>, района турецкого седла, суставов, МРТ всех отделов позвоночника, МРТ брюшной полости и прочих внутренних органов, выполнить исследования сосудов, лимфатических узлов, мягких тканей. Использование сверхвысокопольного аппарата и современного программного обеспечения имеет ряд преимуществ, к примеру, это обеспечивает высокую скорость сканирования и большую разрешающую способность.</p>
-
-                    <p>Кроме магнитно-резонансной томографии Центр им. Алмазова в Приморском районе выполняет мультиспиральную компьютерную томографию, эндоскопическую, функциональную, лабораторную и рентгендиагностику. Рентгенологическое отделение Центра оборудовано современной цифровой аппаратурой, позволяющей выполнять исследования на высоком уровне.</p>
-
-                    <p>&nbsp;</p>
-
-                    <p>Кроме Центра им. Алмазова в этом районе МРТ делают следующие клиники: ЛДЦ МИБС, расположенный недалеко от ст. метро &laquo;Удельная&raquo;, Центр экстренной и радиационной медицины им. Никифорова.</p>
-
-                        <p>Сделать <strong>МРТ в Приморском районе СПб</strong> в Центре им. Алмазова Вы можете по предварительной записи по телефонам медицинского учреждения.</p>
-
-                        <p>Выполнить обследование головного мозга, внутренних органов, суставов, МРТ позвоночника в Санкт-Петербурге в Приморском районе можно по полисам ОМС, ДМС или на платной основе.</p>
-                </div>
-            </div>
         </div>
     </div>
+</div>
+<?php endif; ?>
