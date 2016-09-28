@@ -2,8 +2,8 @@
 
 /* @var $this yii\web\View */
 
-$this->registerJsFile('@web/js/maps.js', ['position'=>\yii\web\View::POS_END, 'depends' => 'yii\web\YiiAsset'], 'maps');
-$this->registerJsFile('https://maps.googleapis.com/maps/api/js?key=AIzaSyBSsTYvYrSq2ITkQP51BDaT_b32DGO5UuM&callback=initialize', ['position'=>\yii\web\View::POS_END, 'depends' => 'maps']);
+$this->registerJsFile('@web/js/clinics.js', ['position'=>\yii\web\View::POS_END, 'depends' => 'yii\web\YiiAsset'], 'clinics');
+$this->registerJsFile('https://maps.googleapis.com/maps/api/js?key=AIzaSyBSsTYvYrSq2ITkQP51BDaT_b32DGO5UuM&callback=initialize', ['position'=>\yii\web\View::POS_END, 'depends' => 'clinics']);
 ?>
 <div class="row"> 
   <?= $this->render('_sidebar') ?>
