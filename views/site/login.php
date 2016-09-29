@@ -10,6 +10,7 @@ use yii\bootstrap\ActiveForm;
 $this->title = 'Вход на сайт';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<?php //echo Yii::$app->getSecurity()->generatePasswordHash('gorillaz935'); ?>
 <div class="site-login">
     <h1><?= Html::encode($this->title) ?></h1>
 

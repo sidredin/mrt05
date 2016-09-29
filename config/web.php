@@ -9,6 +9,13 @@ $config = [
     'bootstrap' => ['log'],
     'defaultRoute' => 'site/index',
     'language' => 'ru',
+    'modules' => [
+        'admin' => [
+            'class' => 'app\modules\admin\Module',
+            'layout'=>'admin',
+            'defaultRoute' => 'clinics/index',
+        ],
+    ],
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
