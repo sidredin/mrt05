@@ -22,14 +22,13 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            // [
-            //     'attribute' => 'city_id',
-            //     'value' => function($data){
-            //         debug($data);
-            //     },
-            // ],
-            'city_id',
             'name',
+            [
+                'attribute' => 'city_id',
+                'value' => function($data){
+                    return $data->city->name;
+                },
+            ],
             // 'price_mrt:ntext',
             // 'price_kt:ntext',
             // 'description:ntext',

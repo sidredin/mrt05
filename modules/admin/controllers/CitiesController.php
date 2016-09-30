@@ -3,15 +3,16 @@
 namespace app\modules\admin\controllers;
 
 use Yii;
-use app\modules\admin\models\Clinics;
+use app\modules\admin\models\Cities;
 use yii\data\ActiveDataProvider;
+use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * ClinicsController implements the CRUD actions for Clinics model.
+ * CitiesController implements the CRUD actions for Cities model.
  */
-class ClinicsController extends AppAdminController
+class CitiesController extends Controller
 {
     /**
      * @inheritdoc
@@ -29,21 +30,13 @@ class ClinicsController extends AppAdminController
     }
 
     /**
-     * Lists all Clinics models.
+     * Lists all Cities models.
      * @return mixed
      */
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Clinics::find()->with('city'),
-            // 'pagination' => [
-            //     'pageSize' => 30
-            // ],
-            'sort' => [
-                'defaultOrder' => [
-                    'id' => SORT_DESC
-                ]
-            ],
+            'query' => Cities::find(),
         ]);
 
         return $this->render('index', [
@@ -52,7 +45,7 @@ class ClinicsController extends AppAdminController
     }
 
     /**
-     * Displays a single Clinics model.
+     * Displays a single Cities model.
      * @param string $id
      * @return mixed
      */
@@ -64,13 +57,13 @@ class ClinicsController extends AppAdminController
     }
 
     /**
-     * Creates a new Clinics model.
+     * Creates a new Cities model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Clinics();
+        $model = new Cities();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -82,7 +75,7 @@ class ClinicsController extends AppAdminController
     }
 
     /**
-     * Updates an existing Clinics model.
+     * Updates an existing Cities model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param string $id
      * @return mixed
@@ -101,7 +94,7 @@ class ClinicsController extends AppAdminController
     }
 
     /**
-     * Deletes an existing Clinics model.
+     * Deletes an existing Cities model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param string $id
      * @return mixed
@@ -114,15 +107,15 @@ class ClinicsController extends AppAdminController
     }
 
     /**
-     * Finds the Clinics model based on its primary key value.
+     * Finds the Cities model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param string $id
-     * @return Clinics the loaded model
+     * @return Cities the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Clinics::findOne($id)) !== null) {
+        if (($model = Cities::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

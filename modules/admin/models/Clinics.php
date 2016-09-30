@@ -45,6 +45,10 @@ class Clinics extends \yii\db\ActiveRecord
         return 'clinics';
     }
 
+    public function getCity(){
+        return $this->hasOne(Cities::className(), ['id'=>'city_id']);
+      }
+
     /**
      * @inheritdoc
      */

@@ -36,7 +36,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'working_hours')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'around_the_clock')->textInput() ?>
+    <?= $form->field($model, 'around_the_clock')->dropDownList([ '0'=>'Нет', '1'=>'Да', ]) ?>
 
     <?= $form->field($model, 'tesla_1_5')->textInput() ?>
 
