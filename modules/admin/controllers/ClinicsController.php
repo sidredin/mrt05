@@ -73,6 +73,7 @@ class ClinicsController extends AppAdminController
         $model = new Clinics();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('success', "Клиника \"{$model->name}\" добавлена");
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
@@ -92,6 +93,7 @@ class ClinicsController extends AppAdminController
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('success', "Клиника \"{$model->name}\" обновлена");
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [

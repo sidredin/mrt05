@@ -33,7 +33,10 @@ function addMarker(location) {
   markers.push(marker);
 }
 
+// Высвечивание активных пунктов меню (разных меню - горизонтальных, вертикальных и т.п.)
+
 $(document).ready(function () {
+
   var location = window.location.href;
 
   $('.dropdown-menu li').each(function () {

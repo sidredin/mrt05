@@ -42,30 +42,66 @@ AppAsset::register($this);
     </div>
 
     <div class="navbar navbar-default" role="navigation">
-        <div class="navbar-collapse" id="bs-example-navbar-collapse-1">
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="<?=  Url::to(['/admin'])?>" class="navbar-brand active">Админка</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a id="dLabel" data-target="#" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        Клиники
+                        <span class="caret"></span>
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="dLabel">
+                        <li>
+                            <a href="<?= Url::to(['/admin/clinics'])?>">Список клиник</a>
+                        </li>
+                        <li>
+                            <a href="<?= Url::to(['/admin/clinics/create'])?>">Добавить клинику</a>
+                        </li>
+                      </ul>
+                </li>
+                <li class="dropdown">
+                    <a id="dLabel" data-target="#" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        Города
+                        <span class="caret"></span>
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="dLabel">
+                        <li>
+                            <a href="<?= Url::to(['/admin/cities'])?>">Список городов</a>
+                        </li>
+                        <li>
+                            <a href="<?= Url::to(['/admin/cities/create'])?>">Добавить город</a>
+                        </li>
+                      </ul>
+                </li>
                 <?php if(!Yii::$app->user->isGuest): ?>
                     <li>
-                    <a href="<?= \yii\helpers\Url::to(['/site/logout'])?>"><i class="fa fa-user"></i> <?= Yii::$app->user->identity['username']?> (Выход)</a>
+                    <a href="<?= Url::to(['/site/logout'])?>"><i class="fa fa-user"></i> <?= Yii::$app->user->identity['username']?> (Выход)</a>
                     </li>
                 <?php endif;?>
-                <!--<li class="">
-                    <a href="encyclopedia">Энциклопедия
-                    </a>
-                </li>
-                 <li class="">
-                    <a href="mfaq_mrt">О МРТ
-                    </a>
-                </li>
-                <li class="">
-                    <a href="mfaq_kt">О КТ
-                    </a>
-                </li> -->
             </ul>
+            <div class="dropdown">
+              
+            </div>
 
         </div>
     </div>
-
+    <?php if( Yii::$app->session->hasFlash('success') ): ?>
+        <div class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <?php echo Yii::$app->session->getFlash('success'); ?>
+        </div>
+    <?php endif;?>
     <?=$content?>
     
 </div>

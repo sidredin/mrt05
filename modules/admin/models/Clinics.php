@@ -10,6 +10,7 @@ use Yii;
  * @property string $id
  * @property string $city_id
  * @property string $name
+ * @property string $logo
  * @property string $price_mrt
  * @property string $price_kt
  * @property string $description
@@ -55,10 +56,10 @@ class Clinics extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['city_id', 'name', 'price_mrt', 'price_kt', 'description', 'phone', 'email', 'site', 'address', 'lat', 'lng', 'working_hours', 'mrt_model', 'mrt_min', 'kt_model', 'kt_min', 'meta_description'], 'required'],
+            [['city_id', 'name', 'phone', 'address', 'working_hours','lat', 'lng'], 'required'],
             [['city_id', 'around_the_clock', 'tesla_1_5', 'private_property', 'mrt', 'mrt_min', 'kt', 'kt_min', 'for_children', 'free_concult', 'clinics_network', 'open_tomograph'], 'integer'],
-            [['price_mrt', 'price_kt', 'description'], 'string'],
-            [['name', 'phone', 'address', 'working_hours', 'mrt_model', 'kt_model', 'meta_description'], 'string', 'max' => 255],
+            [['price_mrt', 'price_kt', 'description', 'logo'], 'string'],
+            [['name', 'phone', 'address', 'working_hours', 'mrt_model', 'kt_model', 'meta_description',], 'string', 'max' => 255],
             [['email', 'site'], 'string', 'max' => 50],
             [['lat', 'lng'], 'string', 'max' => 25],
         ];
@@ -73,6 +74,7 @@ class Clinics extends \yii\db\ActiveRecord
             'id' => 'ID клиники',
             'city_id' => 'Город',
             'name' => 'Название клиники',
+            'logo'=> 'Логотип',
             'price_mrt' => 'Цены на МРТ',
             'price_kt' => 'Цены на КТ',
             'description' => 'Описание клиники',

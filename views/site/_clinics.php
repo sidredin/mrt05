@@ -11,7 +11,7 @@ use yii\helpers\Url;
   <div class="row clinic-row" data-lat="<?=$clinic->lat?>" data-lng="<?=$clinic->lng?>">
     <div class="col-xs-4 col-sm-2">
       <a href="<?=  Url::to(['/clinic/view', 'id'=>$clinic->id])?>">
-        <?= Html::img("@web/images/clinics/{$clinic->id}.jpg", ["alt" => $clinic->name, "class"=>"img-responsive clinic-table-img"]) ?>
+        <?=$clinic->logo?>
       </a>
     </div>
     <div class="col-xs-8 col-sm-7">        

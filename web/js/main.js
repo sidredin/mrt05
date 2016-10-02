@@ -4,6 +4,8 @@ $(document).ready(function () {
       var link = $(this).children()[0].href;
       if(location == link) {
           $(this).addClass('active');
+          $(this).parent().parent('li').addClass('active');
+
       }
   });
 

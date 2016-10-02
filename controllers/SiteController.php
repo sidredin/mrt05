@@ -65,7 +65,7 @@ class SiteController extends AppController
   {
     $filter = Yii::$app->request->post('filter');
     $type = Yii::$app->request->get('type');
-    $query= Clinics::find()->select(['id','city_id','name','phone','address','lat','lng','working_hours','tesla_1_5','private_property','mrt','mrt_min','kt','kt_min','for_children','free_concult','clinics_network','open_tomograph'])->with('city');
+    $query= Clinics::find()->select(['id','city_id','name', 'logo','phone','address','lat','lng','working_hours','tesla_1_5','private_property','mrt','mrt_min','kt','kt_min','for_children','free_concult','clinics_network','open_tomograph'])->with('city');
     if($filter && $type){
       $clinics = $query->where([$filter=>1, $type=>1])->all();
     }elseif($filter || $type){
@@ -88,7 +88,7 @@ class SiteController extends AppController
       throw new \yii\web\HttpException(404, 'Такой категории нет');
     $filter = Yii::$app->request->get('filter');
     $type = Yii::$app->request->get('type');
-    $query= Clinics::find()->select(['id','city_id','name','phone','address','lat','lng','working_hours','tesla_1_5','private_property','mrt','mrt_min','kt','kt_min','for_children','free_concult','clinics_network','open_tomograph'])->with('city');
+    $query= Clinics::find()->select(['id','city_id','name', 'logo','phone','address','lat','lng','working_hours','tesla_1_5','private_property','mrt','mrt_min','kt','kt_min','for_children','free_concult','clinics_network','open_tomograph'])->with('city');
     if($filter && $type){
       $clinics = $query->where([$filter=>1, $type=>1, 'city_id'=>$city->id])->all();
     }elseif($filter || $type){

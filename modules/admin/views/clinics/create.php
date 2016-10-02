@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\modules\admin\models\Clinics */
 
-$this->title = 'Create Clinics';
-$this->params['breadcrumbs'][] = ['label' => 'Clinics', 'url' => ['index']];
+$this->title = 'Добавить клинику';
+$this->params['breadcrumbs'][] = ['label' => 'Клиники', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="clinics-create">

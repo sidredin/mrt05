@@ -23,6 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'name',
+            'logo:html',
             [
                 'attribute' => 'city_id',
                 'value' => function($data){
