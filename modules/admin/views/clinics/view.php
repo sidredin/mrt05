@@ -31,6 +31,7 @@ $this->registerJsFile('@web/js/view.js', ['position'=>\yii\web\View::POS_END, 'd
         'attributes' => [
             'id',
             'name',
+            'order',
             'logo:html',
             [
                 'attribute' => 'city_id',

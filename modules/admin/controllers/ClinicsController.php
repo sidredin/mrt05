@@ -41,7 +41,7 @@ class ClinicsController extends AppAdminController
             // ],
             'sort' => [
                 'defaultOrder' => [
-                    'id' => SORT_DESC
+                    'order' => SORT_ASC
                 ]
             ],
         ]);

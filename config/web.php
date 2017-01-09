@@ -53,7 +53,6 @@ $config = [
           'showScriptName' => false,
           'enablePrettyUrl' => true,
           'rules' => [
-            'cities/<alias>' => 'site/cities',
             'contact' => 'site/contact',
             'login' => 'site/login',
             'logout' => 'site/logout',

@@ -30,6 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $data->city->name;
                 },
             ],
+            'order',
             // 'price_mrt:ntext',
             // 'price_kt:ntext',
             // 'description:ntext',

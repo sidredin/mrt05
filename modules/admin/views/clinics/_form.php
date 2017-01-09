@@ -20,6 +20,8 @@ $this->registerJsFile('https://maps.googleapis.com/maps/api/js?key=AIzaSyBSsTYvY
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'order')->textInput() ?>
+
     <?php 
         echo $form->field($model, 'logo')->widget(CKEditor::className(), [
           'editorOptions' => ElFinder::ckeditorOptions('elfinder',
