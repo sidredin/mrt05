@@ -26,6 +26,9 @@ phpunit.phar
 # local phpunit config
 /phpunit.xml
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> be7700ba808a5974ab91a42514367233f65eacc0
 # other files
 config/db.php
