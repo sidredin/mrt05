@@ -18,18 +18,31 @@ function initialize() {
 function addMarkers(){
     var markers = [];
     var markerCoords;
+    var infowindowContent;
   var clinics = $('.clinic-row');
   clinics.each(function () {
     markerCoords = new google.maps.LatLng($(this).data('lat'), $(this) .data('lng'));
-    addMarker(markerCoords);
+    infowindowContent = $(this).html();
+    addMarker(markerCoords, infowindowContent);
   })
 }
 
-function addMarker(location) {
+function addMarker(location, infowindowContent) {
+
+  var infowindow = new google.maps.InfoWindow({
+    content: infowindowContent
+  });
+
   var marker = new google.maps.Marker({
     position: location,
-    map: map
+    map: map,
+    title: 'Нажмите сюда для просмотра информации о клинике',
   });
+
+  marker.addListener('click', function() {
+    infowindow.open(map, marker);
+  });
+
   markers.push(marker);
 }
 
@@ -57,22 +70,5 @@ $(document).ready(function () {
         $(this).addClass('active');
       }
   });
-
-  $('.add-to-cart').on('click', function(e){
-     e.preventDefault();
-     var id = $(this).data('id');
-     $.ajax({
-         url: "/cart/add",
-         data: {id: id},
-         type: 'GET',
-         success: function(res){
-             if(!res) alert('Ошибка!');
-             showCart(res);
-         },
-         error: function(res){
-             alert('Произошла ошибка в процессе Ajax-запроса');
-         },
-     });
- });
 
 });
