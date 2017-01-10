@@ -26,6 +26,8 @@ phpunit.phar
 # local phpunit config
 /phpunit.xml
 
+/web/robots.txt
+
 <<<<<<< HEAD
 =======
 
