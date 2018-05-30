@@ -101,3 +101,70 @@ a.desc:after {
 .main-text{
     padding: 10px;
 }
+.call-to-action-wrap{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    height: 86px;
+}
+.call-to-action-wrap div{
+    margin-bottom: 20px;
+}
+.support-phone{
+    font-family: 'Montserrat', sans-serif;
+    color: #0060B0;
+    margin: 0 0 0 20px;
+    line-height: 20px;
+}
+.support-phone span{
+    font-weight: 700;
+    font-size: 40px;
+}
+.call-to-action{
+    font-family: 'Roboto', sans-serif;
+    text-align: right;
+    margin: 0;
+}
+.logo-img{
+    width: 100%;
+}
+
+@media screen and (max-width: 995px) { 
+    .call-to-action-wrap{
+        height: inherit;
+    }
+    .call-to-action-wrap div {
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 768px) { 
+    .logo-img{
+        width: inherit;
+    }
+    .call-to-action-wrap{
+        float: none !important
+    }
+}
+
+@media screen and (max-width: 558px) {
+    .logo-wrap{
+        text-align: center;
+    }
+    .call-to-action-wrap{
+        display: flex;
+        justify-content: center;
+    }.support-phone span {
+        font-size: 20px;
+    }    
+}
+
+@media screen and (max-width: 472px) {
+    .call-to-action {
+        text-align: center;
+    } 
+    .support-phone {
+        margin: 0 20px;
+    }
+}

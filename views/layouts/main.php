@@ -20,6 +20,7 @@ AppAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Roboto" rel="stylesheet">
     <?php $this->head() ?>
 </head>
 
@@ -56,16 +57,23 @@ AppAsset::register($this);
 <div class="container" style="margin-bottom: 50px">
 
     <div class="row">
-        <div class="col-sm-8">
-            <div class="pull-left" style="margin-right: 20px">
+        <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 logo-wrap">
+            <div>
                 <a href="<?= Url::home(); ?>">
-                  <?= Html::img('@web/images/logo.jpg', ['alt'=>'Полный каталог клиник МРТ и КТ']) ?>
+                  <?= Html::img('@web/images/logo.png', ['alt'=>'Полный каталог клиник МРТ и КТ', 'class' => 'logo-img']) ?>
                 </a>
             </div>
-
-            <h3 style="margin-top: 10px">Полный каталог клиник<br/>
-                <small>МРТ&nbsp;КТ</small>
-            </h3>
+        </div>
+        <div class="col-xl-7 col-lg-7 col-md-7 col-sm-5 call-to-action-wrap pull-right">
+            <div>
+                <p class="call-to-action">
+                    Позвоните нам, мы подберем центр<br>
+                    и запишем на исследование
+                </p>
+            </div>
+            <div>
+                <p class="support-phone">+7 (988) 2<span>92-72-52</span></p>
+            </div>
         </div>
     </div>
 

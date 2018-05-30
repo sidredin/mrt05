@@ -14,11 +14,13 @@ use yii\helpers\Url;
                 </button>
                 <ul class="dropdown-menu" role="menu">
                     <li>
+                        <a href="<?=  Url::to(['/site/cities', 'alias'=>'derbent'])?>">Дербент</a>
+                    </li>
+                    <li>
                         <a href="<?=  Url::to(['/site/cities', 'alias'=>'makhachkala'])?>">Махачкала</a>
                     </li>
-                
                     <li>
-                        <a href="<?=  Url::to(['/site/cities', 'alias'=>'kaspiysk'])?>">Каспийск</a>
+                        <a href="<?=  Url::to(['/site/cities', 'alias'=>'khasavyurt'])?>">Хасавюрт</a>
                     </li>                       
                 </ul>
             </div>

@@ -16,7 +16,7 @@ $this->registerJsFile('https://maps.googleapis.com/maps/api/js?key=AIzaSyBSsTYvY
     <h2 style="margin-top: 0px">
         <small>МРТ и КТ клиники Дагестана</small>
     </h2>
-    <div id="map-opts" data-center-lat="42.948381397653165" data-center-lng="47.51861572265625" data-map-zoom="9"></div>
+    <div id="map-opts" data-center-lat="42.9755490" data-center-lng="47.4918377" data-map-zoom="13"></div>
     <div id="map"></div>
 
     <?= $this->render('_clinics', compact('pages', 'clinics')) ?>
